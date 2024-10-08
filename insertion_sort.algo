@@ -1,0 +1,26 @@
+// Algorithm to implement insertion sort
+PROCEDURE insertion_sort(arr : ARRAY_OF INTEGER)
+
+VAR
+    i, j, currentElement, arrLength : INTEGER;
+
+BEGIN
+    arrLength := arr.length;
+    
+    // Start loop from the second element
+    FOR i FROM 1 TO arrLength - 1 STEP 1 DO
+        currentElement := arr[i];  // Pick the current element
+        j := i - 1;  // j points to the element before current
+
+        // Move elements of arr[0..i-1], that are greater than current,
+        // to one position ahead of their current position
+        WHILE j >= 0 AND arr[j] > currentElement DO
+            arr[j + 1] := arr[j];  // Shift element to the right
+            j := j - 1;  // Move to the previous element
+        END_WHILE
+
+        // Place the current element in its correct position
+        arr[j + 1] := currentElement;
+    END_FOR
+
+END
